@@ -1,0 +1,93 @@
+﻿@page
+@model DiceRoller.Pages.DiceRollerGameModel
+@{
+
+    int currentHour = DateTime.Now.Hour;
+}
+
+
+
+
+@if (currentHour < 12)
+{
+    <img src="~/images/afternoon.jpg" width="1000" height="100" />
+    <div>
+        <h3 style="color:blue"> <strong style="position: center">Welcome and Good Morning!</strong></h3>
+    </div>
+}
+else
+{
+    <div style="position: center">
+        <img src="~/images/morning.jpg" width="1000" height="100" />
+
+<hr />
+
+        <h3 class="text-center"> Welcome and Good Afternoon!</h3>
+    </div>
+}
+
+
+
+
+@{
+    int randomNumber = new Random().Next(1, 7);
+    int winningNumber = randomNumber * 2 + 1;
+
+    int farOff = winningNumber - randomNumber;
+
+}
+
+
+
+<html>
+<head>
+
+
+</head>
+<body >
+
+
+
+
+
+
+    <center>
+        <div></div>
+        @if (winningNumber == 5)
+        {
+
+            <img scr="~/images/win3.jpg">
+
+            <div>
+
+                <img src="~/images/winning.jpg" width="350" height="250" />
+            </div>
+
+            <button type="button" class="btn-warning">
+                <h1 style="color:red">You have <strong>WON</strong>! </h1>
+
+            </button>
+            <br />
+        }
+        else
+        {
+            <img src="~/images/lose.jpeg" width="100" height="100" />
+            <div style="position: center" height="200px" width="50%" background-color="powderblue">
+                <button type="button" class="btn btn-danger">
+                    <h3>You have lost the game!</h3>
+                </button>
+
+                <h1></h1>
+
+                <h6> You are  <span class="badge bg-warning">@farOff</span> far-off from winning</h6>
+            </div>
+            <img src="~/images/tryAgain1.png" width="400" height="100" />
+            <br />
+        }
+
+        <img src="~/images/images.png" width="100" height="100" onClick="window.location.href=window.location.href" /><br />Click the Dice
+    </center>
+
+</body>
+</html>
+
